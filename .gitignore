@@ -3,3 +3,14 @@ __pycache__/
 .pytest_cache/
 *.pyc
 .DS_Store
+
+# Local development and agent working files
+/tests/
+/VALIDATION.md
+/requirements-dev.txt
+/pytest.ini
+/AGENTS.md
+/CLAUDE.md
+/.local/
+/outputs/
+/docs/slideshow-layout.svg
