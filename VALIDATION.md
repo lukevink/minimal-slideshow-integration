@@ -9,7 +9,7 @@
 
 ## Integration
 
-44 offline tests passed against Home Assistant 2026.10.1 on Python 3.14. Coverage includes all eleven provider setup schemas, source adapter contracts, thumbnail sizes, Synology trusted-device handling, local symlink protection, cross-origin credential filtering, image proportions/metadata stripping, opaque photo API responses, setup errors, unloading and the three button commands. Provider responses in the automated tests are mocked. Live iCloud setup and photo rendering were verified in Home Assistant. That check found video derivatives in Shared Streams; they are now excluded and covered by a regression test. Other providers still require account-based acceptance testing.
+44 offline tests passed against Home Assistant 2026.10.1 on Python 3.14. Coverage includes all eleven provider setup schemas, source adapter contracts, thumbnail sizes, Synology trusted-device handling, local symlink protection, cross-origin credential filtering, image proportions/metadata stripping, opaque photo API responses, setup errors, unloading and the three button commands. Provider responses in the automated tests are mocked. Live iCloud setup and photo rendering were verified in Home Assistant. That check found video derivatives in Shared Streams; they are now excluded and covered by a regression test. Other providers still require account-based acceptance testing. The deployed source reports 2,395 still photos, ready status, and all three command events (last: restart). The tablet reload action completed and its current-page sensor confirmed the updated slideshow URL. GitHub Node tests, Python tests and hassfest passed; HACS remains skipped while private.
 
 ## Release status
 
