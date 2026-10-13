@@ -1,0 +1,1 @@
+DOMAIN = "minimal_slideshow"

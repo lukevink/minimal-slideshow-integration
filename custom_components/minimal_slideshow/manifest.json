@@ -1,0 +1,20 @@
+{
+  "domain": "minimal_slideshow",
+  "name": "Minimal Slideshow",
+  "codeowners": [
+    "@lukevink"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "http",
+    "media_source"
+  ],
+  "documentation": "https://github.com/lukevink/minimal-slideshow-integration",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/lukevink/minimal-slideshow-integration/issues",
+  "requirements": [
+    "PyNaCl==1.6.2"
+  ],
+  "version": "1.2.0"
+}

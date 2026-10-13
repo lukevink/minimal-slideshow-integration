@@ -1,0 +1,64 @@
+{
+  "title": "Minimal Slideshow",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Choose a photo source",
+        "data": {
+          "provider": "Photo source"
+        }
+      },
+      "source": {
+        "title": "Connect {provider}",
+        "description": "Credentials stay in Home Assistant. Shared links must be viewable without signing in. Local folders must be in Home Assistant's media directories or allowlist_external_dirs. For a NAS, mount its folder in Home Assistant first. UGREEN uses an experimental API. For Ente, the optional server URL is the Ente API origin, not the web app.",
+        "data": {
+          "name": "Name",
+          "album_url": "Shared album link",
+          "url": "Server URL",
+          "api_key": "API key / app password",
+          "auth_method": "Authentication",
+          "username": "Username",
+          "password": "Password / app password",
+          "space": "Library",
+          "otp_code": "Current two-factor code (if required)",
+          "folder": "Folder path",
+          "recursive": "Include subfolders",
+          "media": "Photo folder in Media Source"
+        }
+      },
+      "selection": {
+        "title": "Choose photos",
+        "description": "Combine any albums or people. An empty selection shows the whole library, except UGREEN, which requires at least one album. Immich search uses a JSON object; PhotoPrism search uses its normal query syntax.",
+        "data": {
+          "albums": "Albums",
+          "people": "People",
+          "places": "Places",
+          "tags": "Tags",
+          "subjects": "Subjects",
+          "favorites": "Include favorites",
+          "search": "Additional search filter (optional)"
+        }
+      },
+      "existing_icloud": {
+        "title": "Copy existing iCloud connection",
+        "description": "Copies the shared-album connection into Minimal Slideshow. The original integration is unchanged; Minimal runs independently after copying.",
+        "data": {
+          "entry_id": "Existing iCloud source"
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "Enter a valid source URL.",
+      "invalid_path": "Choose an existing folder allowed by Home Assistant. Add it to media_dirs or allowlist_external_dirs first.",
+      "no_photos": "No supported photos were found. Check the selected source and account permissions.",
+      "invalid_search": "Enter a valid JSON object for the Immich search.",
+      "cannot_connect": "Could not connect. Check the address, credentials, permissions and TLS certificate.",
+      "otp_required": "This account needs a current two-factor code. Enter it below."
+    },
+    "abort": {
+      "already_configured": "This source is already configured.",
+      "reconfigure_successful": "Photo source updated.",
+      "no_existing_source": "No existing iCloud source was found."
+    }
+  }
+}

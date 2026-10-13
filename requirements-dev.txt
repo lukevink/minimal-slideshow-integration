@@ -1,0 +1,4 @@
+homeassistant
+pytest
+pytest-asyncio
+PyNaCl==1.6.2
