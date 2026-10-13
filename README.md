@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="custom_components/minimal_slideshow/brand/icon.png" alt="Minimal Photo Slideshow" width="96" height="96">
+</p>
+
 # Minimal Slideshow integration
 
 Bring your photo libraries to [Minimal Photo Slideshow](https://github.com/lukevink/minimal-slideshow) and control playback with Home Assistant automations.
