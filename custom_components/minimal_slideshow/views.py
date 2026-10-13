@@ -2,6 +2,7 @@
 from aiohttp import web
 from homeassistant.components.http import HomeAssistantView
 from .const import DOMAIN
+from .feed import PhotoDownloadError
 
 def get_feed(request):
     feeds = request.app["hass"].data.get(DOMAIN, {})
@@ -44,6 +45,8 @@ class PhotoView(HomeAssistantView):
             data = await feed.get_photo(photo_id)
         except web.HTTPException:
             raise
-        except Exception:
-            return web.json_response({"error": "Photo could not be loaded"}, status=502)
+        except Exception as error:
+            reason = str(error) if isinstance(error, PhotoDownloadError) else type(error).__name__
+            feed.status(reason)
+            return web.json_response({"error": "Photo could not be loaded", "reason": reason}, status=502)
         return web.Response(body=data, content_type="image/jpeg", headers={"Cache-Control": "private, max-age=1800"})

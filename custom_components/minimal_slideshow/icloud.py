@@ -240,6 +240,13 @@ def parse_webstream(payload: Any) -> list[dict[str, Any]]:
         if isinstance(p, dict) and p.get("photoGuid") and isinstance(
             p.get("derivatives"), dict
         ) and p["derivatives"]:
+            # Shared Streams includes videos with 720p/1080p and PosterFrame
+            # derivatives. Selecting by file size would return an MP4 as an image.
+            derivatives = p["derivatives"]
+            if p.get("mediaAssetType") == "video" or "PosterFrame" in derivatives or any(
+                key.endswith("p") and key[:-1].isdigit() for key in derivatives
+            ):
+                continue
             out.append(p)
     return out
 

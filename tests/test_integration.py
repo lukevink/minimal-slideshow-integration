@@ -104,3 +104,10 @@ async def test_unload_removes_memory_cache():
     hass=SimpleNamespace(data={DOMAIN:{'test':SimpleNamespace(close=AsyncMock())}},config_entries=SimpleNamespace(async_unload_platforms=AsyncMock(return_value=True)))
     assert await async_unload_entry(hass,SimpleNamespace(entry_id='test'))
     assert hass.data[DOMAIN]=={}
+
+
+def test_sharedstreams_catalog_excludes_video_derivatives():
+    photo = {"photoGuid": "still", "derivatives": {"2049": {"checksum": "jpeg"}}}
+    video = {"photoGuid": "video", "mediaAssetType": "video", "derivatives": {"720p": {"checksum": "mp4"}, "PosterFrame": {"checksum": "poster"}}}
+    untyped_video = {"photoGuid": "untyped", "derivatives": {"1080p": {"checksum": "mp4"}}}
+    assert icloud.parse_webstream({"photos": [photo, video, untyped_video]}) == [photo]

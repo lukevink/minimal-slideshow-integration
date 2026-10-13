@@ -4,6 +4,8 @@ permissions:
   contents: read
 jobs:
   hacs:
+    # HACS fetches raw files anonymously; private repositories cannot be checked.
+    if: ${{ !github.event.repository.private }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

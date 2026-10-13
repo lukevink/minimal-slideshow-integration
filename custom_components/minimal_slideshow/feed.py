@@ -13,6 +13,12 @@ from . import icloud
 from .providers import Provider
 MAX_BYTES = 32 * 1024 * 1024
 
+class PhotoDownloadError(Exception):
+    """Safe numeric upstream status, without signed URLs."""
+    def __init__(self, status):
+        self.status = int(status)
+        super().__init__(f"Photo server returned HTTP {self.status}")
+
 def safe_image_url(url: str) -> bool:
     parsed = urlparse(url)
     host = (parsed.hostname or "").lower()
@@ -131,7 +137,7 @@ class PhotoFeed:
                         await self.refresh(force=True)
                         continue
                     if response.status != 200:
-                        raise ValueError("Photo download unavailable")
+                        raise PhotoDownloadError(response.status)
                     if response.content_length and response.content_length > MAX_BYTES:
                         raise ValueError("Photo too large")
                     chunks, size = [], 0
